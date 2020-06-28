@@ -1,0 +1,65 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+{% include 'accounts/status.html' %}
+<br/>
+    <div class="row">
+	<div class="col-md-6">
+		<h5>USERS</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Registration Date</th>
+				</tr>
+				{% for i in users %}
+				<tr>
+					<td>
+						{{i.name}}
+					</td>
+					<td>
+						{{i.email}}
+					</td>
+					<td>
+						{{i.date_created}}
+					</td>
+				</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-6">
+		<h5>RECENT LOCATIONS</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>Location</th>
+					<th>Fendering position</th>
+
+				</tr>
+
+				{% for i in locations %}
+				<tr>
+					<td>
+						{{i.name}}
+					</td>
+					<td>
+						{{i.fendering_position}}
+					</td>
+
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

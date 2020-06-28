@@ -1,0 +1,59 @@
+{% extends 'accounts/main.html' %}
+{% block content %}
+  <br/>
+
+        <br>
+        <div class="row">
+            <div class="col">
+                <div class="card card-body">
+                    <form method="get">
+                        {{myFilter.form}}
+                    <button class="btn btn-primary" type="submit">Search</button>
+                        <a class="btn btn-primary" href="{% url 'create_users' %}">Create User</a>
+                  </form>
+                </div>
+            </div>
+
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Date Registered</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                        </tr>
+
+                        {% for user in users %}
+
+                        <tr>
+                            <td>
+                                {{user.name}}
+                            </td>
+                            <td>
+                                {{user.email}}
+                            </td>
+                            <td>
+                                {{user.date_created}}
+                            </td>
+                            <td>
+                                <a href="{% url 'update_users' user.id %}" class="btn btn-sm btn-info">Update</a>
+                            </td>
+                            <td>
+                                <a href="{% url 'delete_users' user.id %}" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </table>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
